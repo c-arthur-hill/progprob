@@ -20,11 +20,11 @@ a {
 }
 
 a:unvisited {
-    color: #1a0dab;
+    color: #1877F2;
 }
 
 a.nav-link:visited {
-    color: #1a0dab;
+    color: #1877F2;
 }
 
 code,
