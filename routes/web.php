@@ -11,9 +11,9 @@
 |
  */
 
-Route::get('/', 'PostController@home');
+Route::resource('homeSections', 'HomeSectionController');
+Route::get('/', 'HomeSectionController@home');
 Route::resource('questions', 'PostController');
-
 Auth::routes();
-Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');

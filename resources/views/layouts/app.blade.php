@@ -12,28 +12,27 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
     <!-- Styles -->
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}" >
 </head>
 <body>
     <div class="container">
-        <nav>
+        <nav class="align-center">
             <a class="nav-link" href="{{ url('/') }}">Home</a> | 
 
                 <!-- Authentication Links -->
                 @guest
-                    <a class="nav-link" href="{{ route('questions.index') }}">Questions</a> | 
-                    <a class="nav-link" href="{{ route('login') }}">Login</a><br>  
-                    <a href="{{ route('register') }}"><button>Register To Save Progress</button></a>
+                    <a class="nav-link" href="{{ route('login') }}">Login</a> |  
+                    <mark><a href="{{ route('register') }}">FREE! Register To Save Progress</a></mark>  
                 @else
-                    <a class="dropdown-item" href="{{ route('logout') }}">
-                        {{ __('Logout') }}
-                    </a>
-                @endguest
+                    <a class="dropdown-item" href="{{ route('logout') }}">{{ __('Logout') }}</a>  
+                    @endguest
+
+            <form class="inline-block align-center pl-2" method="POST" action="{{ route('home') }}">
+                @csrf
+                <input id="search" type="text" name="password">
+                <button type="submit"/>Search</button>
+            </form>
         </nav>
 
         @yield('content')

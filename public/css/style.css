@@ -5,26 +5,13 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
-h1{
-    color: #111;
+h1, h2, h3{
+    color: #000;
     font-family: "Courier New", Courier, monospace;
-    font-size: 3em;
 }
 
-h2 {
-    font-weight: normal;
-}
-
-a {
-    text-decoration: none;
-}
-
-a:unvisited {
-    color: #1877F2;
-}
-
-a.nav-link:visited {
-    color: #1877F2;
+a, a.nav:visited {
+    color: #000;
 }
 
 code,
@@ -41,54 +28,53 @@ pre {
     padding: 1em;
 }
 
-.container {
-    margin: 0 auto;
-    max-width: 35em;
+.pl-2 {
+    padding-left: 2em;
 }
 
-.row {
-    margin: 0;
-    padding-bottom: 1em;
-    width: 100%;
-}
-
-.column {
-    margin: 0;
+.col-12 {
+    width: 99.5%;
+    margin: .25%;
     display: inline-block;
     vertical-align: top;
+    box-sizing: border-box;
 }
 
-
-.quarter {
-    width: 25%;
-}
-
-.half {
-    width: 50%;
-    min-height: 1px;
-
-}
-
-.full {
-    width: 100%;
-}
-
-.key {
-    max-width: 50%;
-    min-width: 4em;
+.col-12-border {
+    padding: 0 .5em;
+    border: 1px solid #000;
 }
 
 .overflow-hidden {
     overflow: hidden;
 }
 
-.float-right {
-    float: right;
+.align-center {
+    text-align: center;
 }
 
-@media (min-width: @screen-sm-min)
-{
-    h1 {
-        margin-top: 2em;
+.inline-block {
+    display: inline-block;
+}
+
+
+/* medium */
+@media only screen and (min-width: 768px) {
+    .col-12 {
+        width: 49.5%;
+    }
+}
+
+/* large */
+@media only screen and (min-width: 992px) {
+    .col-12 {
+        width: 32.5%;
+    }
+}
+
+/* xtra large */
+@media only screen and (min-width: 1600px) {
+    .col-12 {
+        width: 24.5%;
     }
 }

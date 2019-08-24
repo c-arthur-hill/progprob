@@ -34,7 +34,7 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::all();
-
+        
         return View::make('posts.index')->with('posts', $posts);
     }
 
@@ -61,6 +61,7 @@ class PostController extends Controller
         $post = new Post;
         $post->question = Input::get('question');
         $post->answer = Input::get('answer');
+        $post->home_section = Input::get('home_section_id');
         $post->save();
 
         $post->posts()->attach(Input::get('posts'));
@@ -103,6 +104,7 @@ class PostController extends Controller
         $post = Post::find($id);
         $post->question = Input::get('question');
         $post->answer = Input::get('answer');
+        $post->home_section = Input::get('home_section_id');
         $post->save();
         $post->posts()->sync(Input::get('posts'));
         return Redirect::to('questions');
@@ -116,7 +118,7 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        $post = new Post;
+        $post = Post::find($id);
         $post->delete();
         return Redirect::to('questions');
     }
