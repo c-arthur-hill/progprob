@@ -23,7 +23,7 @@
                 <!-- Authentication Links -->
                 @guest
                     <a class="nav-link" href="{{ route('login') }}">Login</a> |  
-                    <mark><a href="{{ route('register') }}">FREE! Register To Save Progress</a></mark>  
+                    <mark><a href="{{ route('register') }}">Save Progress</a></mark>  
                 @else
                     <a class="dropdown-item" href="{{ route('logout') }}">{{ __('Logout') }}</a>  
                     @endguest
