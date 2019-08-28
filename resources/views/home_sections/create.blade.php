@@ -1,9 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-
     <h1>Create Home Section</h1>
-    {{ Form::Model($homeSection, array('route' => array('homeSections.store'), 'method' => 'POST')) }}
+    {{ Form::Model($homeSection, array('route' => array('homeSections.update', $homeSection->id), 'method' => 'POST')) }}
         <div class="form-group">
             {{ Form::label('name', 'Name') }}
             {{ Form::text('name', null, array('class' => 'form-control')) }}

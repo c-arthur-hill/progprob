@@ -84,7 +84,7 @@ class HomeSectionController extends Controller
      */
     public function edit(HomeSection $homeSection)
     {
-        return View::make('home_sections.edit')->with('home_section', $homeSection);
+        return View::make('home_sections.edit')->with('homeSection', $homeSection);
     }
 
     /**
