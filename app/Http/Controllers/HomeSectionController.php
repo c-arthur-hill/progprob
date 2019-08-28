@@ -13,7 +13,7 @@ class HomeSectionController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('admin')->except(['home']);
+        $this->middleware('admin')->except(['home', 'index']);
     }
 
     /**

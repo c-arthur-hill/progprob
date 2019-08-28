@@ -2,13 +2,13 @@
 
 @section('content')
     <h1>Create Home Section</h1>
-    {{ Form::Model($homeSection, array('route' => array('homeSections.update', $homeSection->id), 'method' => 'PUT')) }}
+    {{ Form::Model($homeSection, array('route' => array('topics.update', $homeSection->id), 'method' => 'PUT')) }}
         <div class="form-group">
             {{ Form::label('name', 'Name') }}
             {{ Form::text('name', null, array('class' => 'form-control')) }}
         <div>
         <div>
-            <button type="submit">Create Home Section</button>
+            <button type="submit">Edit Home Section</button>
         </div>
     </form>
 @endsection

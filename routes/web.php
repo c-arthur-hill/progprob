@@ -11,7 +11,7 @@
 |
  */
 
-Route::resource('homeSections', 'HomeSectionController');
+Route::resource('topics', 'HomeSectionController');
 Route::get('/', 'HomeSectionController@home');
 Route::resource('questions', 'PostController');
 Auth::routes();
