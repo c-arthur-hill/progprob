@@ -23,7 +23,7 @@ class HomeSectionController extends Controller
      */
     public function home()
     {
-        $post = Post::find(1);
+        $post = Post::first();
         $homeSections = HomeSection::all();
 
         return View::make('home_sections.home')->with('homeSections', $homeSections)->with('post', $post);
