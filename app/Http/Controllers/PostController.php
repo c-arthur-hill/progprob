@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\HomeSection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
@@ -47,7 +48,8 @@ class PostController extends Controller
     {
         $posts = Post::all();
         $post = new Post;
-        return View::make('posts.create')->with('post', $post)->with('posts', $posts);
+        $topics = HomeSection::all();
+        return View::make('posts.create')->with('post', $post)->with('posts', $posts)->with('topics', $topics);
     }
 
     /**
@@ -61,10 +63,11 @@ class PostController extends Controller
         $post = new Post;
         $post->question = Input::get('question');
         $post->answer = Input::get('answer');
-        $post->home_section = Input::get('home_section_id');
+        $post->homeSection()->associate(Input::get('topic'));
         $post->save();
 
         $post->posts()->attach(Input::get('posts'));
+        $posts->thePosts()->attach(Input::get('parents'));
     }
 
     /**
@@ -89,7 +92,8 @@ class PostController extends Controller
     {
         $post = Post::find($id);
         $posts = Post::all();
-        return View::make('posts.edit')->with('post', $post)->with('posts', $posts);
+        $topics = HomeSection::all();
+        return View::make('posts.edit')->with('post', $post)->with('posts', $posts)->with('topics', $topics);
     }
 
     /**
@@ -104,9 +108,10 @@ class PostController extends Controller
         $post = Post::find($id);
         $post->question = Input::get('question');
         $post->answer = Input::get('answer');
-        $post->home_section = Input::get('home_section_id');
+        $post->homeSection()->associate(Input::get('topic'));
         $post->save();
         $post->posts()->sync(Input::get('posts'));
+        $post->thePosts()->sync(Input::get('parents'));
         return Redirect::to('questions');
     }
 

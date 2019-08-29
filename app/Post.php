@@ -15,6 +15,11 @@ class Post extends Model
     {
         return $this->belongsToMany('App\Post', 'posts_posts', 'child_id', 'parent_id');
     }
+
+    public function homeSection()
+    {
+        return $this->belongsTo('App\HomeSection');
+    }
 }
 
 class PostsPosts extends Model

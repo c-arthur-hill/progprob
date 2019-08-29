@@ -13,7 +13,7 @@ class HomeSectionController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('admin')->except(['home', 'index']);
+        $this->middleware('admin')->except(['home', 'show']);
     }
 
     /**
@@ -48,7 +48,8 @@ class HomeSectionController extends Controller
     public function create()
     {
         $homeSection = new HomeSection;
-        return View::make('home_sections.create')->with('homeSection', $homeSection);
+        $posts = Post::all();
+        return View::make('home_sections.create')->with('homeSection', $homeSection)->with('posts', $posts);
     }
 
     /**
@@ -62,7 +63,8 @@ class HomeSectionController extends Controller
         $homeSection = new HomeSection;
         $homeSection->name = Input::get('name');
         $homeSection->save();
-        return Redirect::to('homeSections/create');
+        $homeSection->posts()->saveMany(Post::find(Input::get('posts')));
+        return Redirect::to('topics/create');
     }
 
     /**
@@ -71,9 +73,9 @@ class HomeSectionController extends Controller
      * @param  \App\HomeSection  $homeSection
      * @return \Illuminate\Http\Response
      */
-    public function show(HomeSection $homeSection)
+    public function show(HomeSection $topic)
     {
-        return View::Make('home_sections.show')->with('homeSection', $homeSection);
+        return View::Make('home_sections.show')->with('homeSection', $topic);
     }
 
     /**
@@ -82,9 +84,10 @@ class HomeSectionController extends Controller
      * @param  \App\HomeSection  $homeSection
      * @return \Illuminate\Http\Response
      */
-    public function edit(HomeSection $homeSection)
+    public function edit(HomeSection $topic)
     {
-        return View::make('home_sections.edit')->with('homeSection', $homeSection);
+        $posts = Post::all();
+        return View::make('home_sections.edit')->with('homeSection', $topic)->with('posts', $posts);
     }
 
     /**
@@ -94,11 +97,12 @@ class HomeSectionController extends Controller
      * @param  \App\HomeSection  $homeSection
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, HomeSection $homeSection)
+    public function update(Request $request, HomeSection $topic)
     {
-        $homeSection->name = Input::get('name');
-        $homeSection->save();
-        return Redirect::to('homeSections');
+        $topic->name = Input::get('name');
+        $topic->save();
+        $topic->posts()->saveMany(Post::find(Input::get('posts')));
+        return Redirect::to('topics');
     }
 
     /**
@@ -107,9 +111,9 @@ class HomeSectionController extends Controller
      * @param  \App\HomeSection  $homeSection
      * @return \Illuminate\Http\Response
      */
-    public function destroy(HomeSection $homeSection)
+    public function destroy(HomeSection $topic)
     {
-        $homeSection->delete();
-        return Redirect::to('homeSections');
+        $topic->delete();
+        return Redirect::to('topics');
     }
 }
