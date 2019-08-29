@@ -67,7 +67,7 @@ class PostController extends Controller
         $post->save();
 
         $post->posts()->attach(Input::get('posts'));
-        $posts->thePosts()->attach(Input::get('parents'));
+        $post->thePosts()->attach(Input::get('parents'));
     }
 
     /**
