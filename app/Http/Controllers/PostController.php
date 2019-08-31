@@ -68,6 +68,7 @@ class PostController extends Controller
 
         $post->posts()->attach(Input::get('posts'));
         $post->thePosts()->attach(Input::get('parents'));
+        return Redirect::to('questions/create');
     }
 
     /**
