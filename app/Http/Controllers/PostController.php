@@ -13,8 +13,8 @@ class PostController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except(['home', 'show', 'index', 'create', 'store', 'update', 'edit', 'delete']);
-        $this->middleware('admin')->except(['home', 'show', 'index']);
+        $this->middleware('auth')->except(['home', 'show', 'index', 'search', 'create', 'store', 'update', 'edit', 'delete']);
+        $this->middleware('admin')->except(['home', 'show', 'index', 'search']);
     }
 
     /**
