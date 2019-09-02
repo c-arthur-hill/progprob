@@ -18,16 +18,6 @@ class PostController extends Controller
     }
 
     /**
-     * Home Controller
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function home()
-    {
-        return $this->show(1);
-    }
-
-    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
