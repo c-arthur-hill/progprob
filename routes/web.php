@@ -14,6 +14,7 @@
 Route::resource('topics', 'HomeSectionController');
 Route::get('/', 'HomeSectionController@home');
 Route::resource('questions', 'PostController');
+Route::post('/search', 'PostController@search')->name('posts.search');
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');

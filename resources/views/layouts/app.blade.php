@@ -28,13 +28,12 @@
                     <a class="dropdown-item" href="{{ route('logout') }}">{{ __('Logout') }}</a>  
                     @endguest
 
-            <form class="inline-block align-center pl-2" method="POST" action="{{ route('home') }}">
+            <form class="inline-block align-center pl-2" method="POST" action="{{ route('posts.search') }}">
                 @csrf
-                <input id="search" type="text" name="password">
+                <input id="search" type="text" name="search">
                 <button type="submit"/>Search</button>
             </form>
         </nav>
-
         @yield('content')
     </div>
 </body>

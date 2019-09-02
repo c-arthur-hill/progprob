@@ -3,9 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 
 class Post extends Model
 {
+    use Searchable;
+
     public function posts()
     {
         return $this->belongsToMany('App\Post', 'posts_posts', 'parent_id', 'child_id');
@@ -19,6 +22,17 @@ class Post extends Model
     public function homeSection()
     {
         return $this->belongsTo('App\HomeSection');
+    }
+
+    public function searchableAs()
+    {
+        return 'posts';
+    }
+
+    public function toSearchableArray()
+    {
+        $array = $this->toArray();
+        return $array;
     }
 }
 

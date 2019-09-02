@@ -118,4 +118,11 @@ class PostController extends Controller
         $post->delete();
         return Redirect::to('questions');
     }
+
+    public function search(Request $request)
+    {
+        $term = Input::get('search');
+        $results = Post::search($term)->get();
+        return View::make('posts.search')->with('results', $results);
+    }
 }
