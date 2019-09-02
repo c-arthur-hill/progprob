@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\View;
 
 class HomeSectionController extends Controller
 {
+    const HOME_POST = 22;
+
     public function __construct()
     {
         $this->middleware('admin')->except(['home', 'show']);
@@ -23,7 +25,7 @@ class HomeSectionController extends Controller
      */
     public function home()
     {
-        $post = Post::first();
+        $post = Post::find($this::HOME_POST);
         $homeSections = HomeSection::all();
 
         return View::make('home_sections.home')->with('homeSections', $homeSections)->with('post', $post);
