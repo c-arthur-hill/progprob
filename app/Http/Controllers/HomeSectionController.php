@@ -64,6 +64,7 @@ class HomeSectionController extends Controller
     {
         $homeSection = new HomeSection;
         $homeSection->name = Input::get('name');
+        $homeSection->image_name = Input::file('image')->store('topic_names', ['disk' => 'public']);
         $homeSection->save();
         $homeSection->posts()->saveMany(Post::find(Input::get('posts')));
         return Redirect::to('topics/create');
@@ -102,6 +103,7 @@ class HomeSectionController extends Controller
     public function update(Request $request, HomeSection $topic)
     {
         $topic->name = Input::get('name');
+        $topic->image_name = Input::file('image')->store('topic_names', ['disk' => 'public']);
         $topic->save();
         $topic->posts()->saveMany(Post::find(Input::get('posts')));
         return Redirect::to('topics');

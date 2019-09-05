@@ -28,6 +28,10 @@ pre {
     padding: 1em;
 }
 
+img {
+    max-width: 80%;
+}
+
 .col-1 {
     max-width: 35em;
     margin: 0 auto;
